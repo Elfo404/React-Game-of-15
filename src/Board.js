@@ -49,23 +49,10 @@ class Board extends Component {
         let left = A.findIndex(e => e.index + 1 === index && (index+1)%this.size!==1);
         let right = A.findIndex(e => e.index - 1 === index && (index+1)%this.size!==0);
 
-
-        console.log("top: "+(top+1));
-        console.log("bottom: "+(bottom+1));
-        console.log("left: "+(left+1));
-        console.log("right: "+(right+1));
-
         return (typeof A[top] !== 'undefined' && A[top].square === null)
             || (typeof A[bottom] !== 'undefined' && A[bottom].square === null)
             || ( typeof A[left] !== 'undefined' && A[left].square === null )
             || ( typeof A[right] !== 'undefined' && A[right].square === null  );
-
-
-        // return ( typeof this.state.squares[index + this.size] !== 'undefined' && this.state.squares[index + this.size].square === null)
-        //     || ( typeof this.state.squares[index - this.size] !== 'undefined' && this.state.squares[index - this.size].square === null)
-        //     || ( typeof this.state.squares[index + 1] !== 'undefined' && this.state.squares[index + 1].square === null && (index + 1) % this.size !== 0 )
-        //     || ( typeof this.state.squares[index - 1] !== 'undefined' && this.state.squares[index - 1].square === null && (index - 1) % this.size !== 0
-        //     );
     }
 
     renderSquare(v, k) {
