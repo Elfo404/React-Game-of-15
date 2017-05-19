@@ -1,0 +1,21 @@
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 100px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+}
+
+.lol{
+    height: 99px;
+    width: 99px;
+    background-color: aqua;
+    float: left;
+}
