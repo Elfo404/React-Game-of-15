@@ -4,6 +4,7 @@ import Square from "./Square";
 
 class Board extends Component {
 	size = 4;
+	moves=0;
 
 	constructor() {
 		super();
@@ -25,6 +26,7 @@ class Board extends Component {
 
 	handleClick(i) {
 		if (this.canMove(i)) {
+			this.moves++;
 			this.move(i);
 		}
 	}
@@ -63,6 +65,7 @@ class Board extends Component {
 		console.info("render");
 		return (
 			<div>
+				<span>Moves: {this.moves}</span>
 				<div className="board">
 					{this.state.squares.map((object, i) => {
 						if (object.square) {
