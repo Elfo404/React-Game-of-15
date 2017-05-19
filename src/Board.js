@@ -3,7 +3,7 @@ import "./Board.css"
 import Square from "./Square";
 
 class Board extends Component {
-	size = 6;
+	size = 4;
 
 	constructor() {
 		super();
@@ -24,7 +24,6 @@ class Board extends Component {
 	}
 
 	handleClick(i) {
-
 		if (this.canMove(i)) {
 			this.move(i);
 		}
