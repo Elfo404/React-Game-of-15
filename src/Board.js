@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import "./Board.css"
 import Square from "./Square";
+import FlipMove from 'react-flip-move';
 
 class Board extends Component {
-	renderSquare(v, k) {
+	renderSquare(value, index) {
 		const size = Math.sqrt(this.props.squares.length);
-		return <Square key={v} value={v} onClick={() => this.props.onClick(k)} y={parseInt(k / size, 0)}
-		               x={k % size}/>
+		return <Square key={value} value={value} onClick={() => this.props.onClick(index)} y={parseInt(index / size, 0)}
+		               x={index % size} width={(this.props.width/size)}/>
 	}
 
 	render() {
 		return (
 			<div>
-				<div className="board">
-					{this.props.squares.map((object, i) => {
-						return object.square ? this.renderSquare(object.square.props.value, object.index) : null
-					})}
+				<div className="board" style={{width:this.props.width}}>
+					<FlipMove duration={400} easing="ease-out">
+						{this.props.squares.map((value, index) => {
+							return this.renderSquare(value, index)
+						})}
+					</FlipMove>
 				</div>
 			</div>
 		);

@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 import Board from "./Board";
 import './Game.css';
-import Square from "./Square";
 
 class Game extends Component {
-	size=4;
+	size = 4;
+
 	constructor() {
 		super();
-		let squares = [];
-
-		let i;
-		for (i = 0; i < Math.pow(this.size, 2) - 1; i++) {
-			squares.push({
-				index: i,
-				square: <Square key={i} value={i + 1} onClick={() => this.handleClick(i)}/>
-			})
-		}
-		squares.push({ index: i, square: null });
+		let squares = Array.apply(null, { length: Math.pow(this.size, 2) - 1 }).map(Number.call, Number);
+		squares.push(null);
 
 		this.state = {
 			squares: squares
@@ -30,24 +22,15 @@ class Game extends Component {
 	}
 
 	canMove(index) {
-		let A = this.state.squares;
-		let top = A.findIndex(e => e.index + this.size === index);
-		let bottom = A.findIndex(e => e.index - this.size === index);
-		let left = A.findIndex(e => e.index + 1 === index && (index + 1) % this.size !== 1);
-		let right = A.findIndex(e => e.index - 1 === index && (index + 1) % this.size !== 0);
-
-		return (typeof A[top] !== 'undefined' && A[top].square === null)
-			|| (typeof A[bottom] !== 'undefined' && A[bottom].square === null)
-			|| ( typeof A[left] !== 'undefined' && A[left].square === null )
-			|| ( typeof A[right] !== 'undefined' && A[right].square === null  );
+		return (typeof this.state.squares[index - this.size] !== 'undefined' && this.state.squares[index - this.size] === null)
+			|| (typeof this.state.squares[index + this.size] !== 'undefined' && this.state.squares[index + this.size] === null)
+			|| ( typeof this.state.squares[index - 1] !== 'undefined' && this.state.squares[index - 1] === null )
+			|| ( typeof this.state.squares[index + 1] && this.state.squares[index + 1] === null  );
 	}
 
 	move(i) {
 		let A = this.state.squares;
-		let emptyIndex = A[A.findIndex(e => e.square === null)].index;
-
-		A[A.findIndex(e => e.square === null)].index = A[A.findIndex(e => e.index === i)].index;
-		A[A.findIndex(e => e.index === i)].index = emptyIndex;
+		A[i] = A.splice(A.findIndex((e) => e === null), 1, A[i])[0];
 
 		this.setState({ squares: A });
 	}
@@ -57,6 +40,7 @@ class Game extends Component {
 			<div className="game">
 				<div className="game-board">
 					<Board squares={this.state.squares}
+					       width={400}
 					       onClick={(i) => this.handleClick(i)}/>
 				</div>
 				<div className="game-info">
