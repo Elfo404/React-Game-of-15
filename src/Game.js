@@ -44,8 +44,6 @@ class Game extends Component {
 
 	move(i) {
 		let A = this.state.squares;
-		console.log("Swapping " + A[A.findIndex(e => e.index === i)].square.props.value);
-
 		let emptyIndex = A[A.findIndex(e => e.square === null)].index;
 
 		A[A.findIndex(e => e.square === null)].index = A[A.findIndex(e => e.index === i)].index;
