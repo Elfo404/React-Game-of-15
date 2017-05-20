@@ -6,8 +6,7 @@ import FlipMove from 'react-flip-move';
 class Board extends Component {
 	renderSquare(value, index) {
 		const size = Math.sqrt(this.props.squares.length);
-		return <Square key={value} value={value} onClick={() => this.props.onClick(index)} y={parseInt(index / size, 0)}
-		               x={index % size} width={(this.props.width/size)}/>
+		return <Square key={value} value={value} onClick={() => this.props.onClick(index)}  width={(this.props.width/size)}/>
 	}
 
 	render() {
