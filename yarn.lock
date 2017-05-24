@@ -4171,6 +4171,10 @@ react-flip-move@^2.9.11:
   version "2.9.11"
   resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-2.9.11.tgz#dda6de9b6a0df64701cf003a87f9094d401f643a"
 
+react-preload@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-preload/-/react-preload-0.5.1.tgz#ab38ec9e004862914d6b6137d057e647410d988c"
+
 react-scripts@0.9.5:
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-0.9.5.tgz#e9f05c8427e27131662a9b9d7a9786d1ff16bb3f"

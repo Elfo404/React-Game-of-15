@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Board from "./Board";
 import './Game.css';
+import Preload from "react-preload";
 
 class Game extends Component {
 	size = 4;
+	bg = `/img/2.jpg`;
+
 
 	constructor() {
 		super();
@@ -35,19 +38,28 @@ class Game extends Component {
 		this.setState({ squares: A });
 	}
 
+
 	render() {
+		const boardSize = 600;
+		const loading=<span>Loading</span>;
+
 		return (
-			<div className="game">
-				<div className="game-board">
-					<Board squares={this.state.squares}
-					       width={400}
-					       onClick={(i) => this.handleClick(i)}/>
+			<Preload
+				loadingIndicator={loading}
+				images={[this.bg]}>
+				<div className="game">
+					<div className="game-board">
+						<Board squares={this.state.squares}
+						       width={boardSize}
+						       onClick={(i) => this.handleClick(i)}
+						       bg={this.bg}/>
+					</div>
+					<div className="game-info">
+						<div>{/* status */}</div>
+						<ol>{/* TODO */}</ol>
+					</div>
 				</div>
-				<div className="game-info">
-					<div>{/* status */}</div>
-					<ol>{/* TODO */}</ol>
-				</div>
-			</div>
+			</Preload>
 		);
 	}
 }

@@ -17,7 +17,7 @@
     1px 1px 0 #fff;
     text-align: center;
     line-height: 90px;
-    box-sizing: border-box;
+    box-sizing: content-box;
     cursor: pointer;
     box-shadow: 0 0 2px #999;
 }

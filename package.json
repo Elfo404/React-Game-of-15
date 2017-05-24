@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-flip-move": "^2.9.11"
+    "react-flip-move": "^2.9.11",
+    "react-preload": "^0.5.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
