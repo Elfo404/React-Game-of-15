@@ -11,8 +11,9 @@ export default class Square extends Component {
 			<div className={'square' + (value === null ? ' empty' : '')} onClick={() => this.props.onClick()}
 			     style={{
 				     width: size, height: size, backgroundImage: `url(${this.props.bg})`,
-				     backgroundPosition: `-${size * (value % 4)}px -${size * (parseInt(value / 4))}px`,
-				     backgroundSize:this.width(this.props.bg)+"%"
+				     backgroundPosition: `-${size * (value % 4)}px -${size * (parseInt(value / 4,10))}px`,
+				     backgroundSize:Square.width(this.props.bg)+"%",
+					 lineHeight:size+"px"
 			     }}>
 
 				{this.props.value + 1}
@@ -21,7 +22,7 @@ export default class Square extends Component {
 	}
 
 
-	width(bg) {
+	static width(bg) {
 		// I just broke it up on newlines for readability
 		let image = new Image();
 		image.src=bg;

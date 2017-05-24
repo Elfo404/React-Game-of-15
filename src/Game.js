@@ -6,6 +6,7 @@ import Preload from "react-preload";
 class Game extends Component {
 	size = 4;
 	bg = `/img/2.jpg`;
+	moves=0;
 
 
 	constructor() {
@@ -20,6 +21,7 @@ class Game extends Component {
 
 	handleClick(i) {
 		if (this.canMove(i)) {
+			this.moves++;
 			this.move(i);
 		}
 	}
@@ -40,7 +42,7 @@ class Game extends Component {
 
 
 	render() {
-		const boardSize = 600;
+		const boardSize = 400;
 		const loading=<span>Loading</span>;
 
 		return (
@@ -48,16 +50,18 @@ class Game extends Component {
 				loadingIndicator={loading}
 				images={[this.bg]}>
 				<div className="game">
+					<div className="game-info">
+						<h1>Game of 15</h1>
+						<div>Moves: <b>{this.moves}</b></div>
+						<ol>{/* TODO */}</ol>
+					</div>
 					<div className="game-board">
 						<Board squares={this.state.squares}
 						       width={boardSize}
 						       onClick={(i) => this.handleClick(i)}
 						       bg={this.bg}/>
 					</div>
-					<div className="game-info">
-						<div>{/* status */}</div>
-						<ol>{/* TODO */}</ol>
-					</div>
+
 				</div>
 			</Preload>
 		);
